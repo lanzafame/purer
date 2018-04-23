@@ -136,7 +136,7 @@ prompt_pure_preprompt_render() {
 	local symbol_color="%(?.${PURE_PROMPT_SYMBOL_COLOR:-magenta}.red)"
 
 	# begin with symbol, colored by previous command exit code
-	preprompt+="%F%B{$symbol_color}${PURE_PROMPT_SYMBOL:-❯}%f%b"
+	preprompt+="%F%B{$symbol_color}${PURE_PROMPT_SYMBOL:-❯}%f%b "
 	# directory, colored by vim status
 	preprompt+="%B%F{$STATUS_COLOR}%c%f%b"
 	# git info
@@ -145,10 +145,10 @@ prompt_pure_preprompt_render() {
 	preprompt+="%F{cyan}${prompt_pure_git_arrows}%f"
 	# username and machine if applicable
 	preprompt+=$prompt_pure_username
-	# execution time
-	preprompt+="%B%F{242}${prompt_pure_cmd_exec_time}%f%b"
+	# # execution time
+	# preprompt+="%B%F{242}${prompt_pure_cmd_exec_time}%f%b"
 	# end with symbol, colored by previous command exit code
-	preprompt+="%F%B{$symbol_color}${PURE_PROMPT_END_SYMBOL:-❯}%f%b"
+	preprompt+=" %F%B{$symbol_color}${PURE_PROMPT_END_SYMBOL:-❯}%f%b"
 
 	preprompt+=" "
 
