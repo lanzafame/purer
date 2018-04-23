@@ -148,7 +148,7 @@ prompt_pure_preprompt_render() {
 	# execution time
 	preprompt+="%B%F{242}${prompt_pure_cmd_exec_time}%f%b"
 	# end with symbol, colored by previous command exit code
-	preprompt+="%F%B{$symbol_color}${PURE_PROMPT_END_SYMBOL:❯}%f%b"
+	preprompt+="%F%B{$symbol_color}${PURE_PROMPT_END_SYMBOL:-❯}%f%b"
 
 	preprompt+=" "
 
