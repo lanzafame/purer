@@ -128,13 +128,15 @@ prompt_pure_preprompt_render() {
 
 
 	# add a newline between commands
-  FIRST_COMMAND_THRESHOLD=1
-  if [[ "$PURER_PROMPT_COMMAND_COUNT" -gt "$FIRST_COMMAND_THRESHOLD" ]]; then
-    preprompt+=$'\n'
-  fi
+  # FIRST_COMMAND_THRESHOLD=1
+  # if [[ "$PURER_PROMPT_COMMAND_COUNT" -gt "$FIRST_COMMAND_THRESHOLD" ]]; then
+  #   preprompt+=$'\n'
+  # fi
 
 	local symbol_color="%(?.${PURE_PROMPT_SYMBOL_COLOR:-magenta}.red)"
 
+	# begin with symbol, colored by previous command exit code
+	preprompt+="%F%B{$symbol_color}${PURE_PROMPT_SYMBOL:-❯}%f%b"
 	# directory, colored by vim status
 	preprompt+="%B%F{$STATUS_COLOR}%c%f%b"
 	# git info
@@ -146,7 +148,7 @@ prompt_pure_preprompt_render() {
 	# execution time
 	preprompt+="%B%F{242}${prompt_pure_cmd_exec_time}%f%b"
 	# end with symbol, colored by previous command exit code
-	preprompt+="%F{$symbol_color}${PURE_PROMPT_SYMBOL:-❯}%f "
+	preprompt+="%F%B{$symbol_color}${PURE_PROMPT_END_SYMBOL:❯}%f%b"
 
 	preprompt+=" "
 
